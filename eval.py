@@ -6,6 +6,7 @@ import random
 from tqdm import tqdm
 import datetime
 from sklearn.metrics import average_precision_score
+from sklearn.metrics import roc_auc_score
 from data import D3_dataset_AP
 from models import D3_model
 
@@ -76,6 +77,7 @@ if __name__ == '__main__':
     y_true = np.array(y_true)
     y_pred = np.array(y_pred)
     ap_score = average_precision_score(1-y_true, y_pred)
+    auc = roc_auc_score(1-y_true, y_pred)
     
     result_str = (
         f"AP Evaluation Results\n"
@@ -83,8 +85,11 @@ if __name__ == '__main__':
         f"Loss Type: {loss_type}\n"
         f"Real CSV: {real_csv}\n"
         f"Fake CSV: {fake_csv}\n"
+        f"Real Samples: {np.sum(y_true==0)}\n"
+        f"Fake Samples: {np.sum(y_true==1)}\n"
         f"Total Samples: {len(y_true)}\n"
         f"AP Score: {ap_score:.4f}\n"
+        f"AUC Score: {auc:.4f}\n"
     )
     
     print("\n" + "="*50)

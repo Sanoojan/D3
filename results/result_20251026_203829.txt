@@ -1,0 +1,7 @@
+AP Evaluation Results
+Encoder: XCLIP-16
+Loss Type: l2
+Real CSV: dataset/DeepfakeDatasets/FakeAVCeleb/csv/RealVideo-RealAudio.csv
+Fake CSV: dataset/DeepfakeDatasets/FakeAVCeleb/csv/FakeVideo-RealAudio.csv
+Total Samples: 1500
+AP Score: 0.4616

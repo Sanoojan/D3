@@ -1,3 +1,4 @@
+import subprocess
 import os
 from glob import glob
 from moviepy.editor import VideoFileClip
@@ -18,7 +19,6 @@ def process_video(video_path, dataset_path):
     path = video_path.split('/')[2:-1]
     path = '/'.join(path)
     image_path = f'{dataset_path}/frames/'+path+'/'+ video_name+'/'
-    
     if os.path.exists(image_path):
         print(video_name, "frames exist")
     else:
@@ -33,7 +33,16 @@ def process_video(video_path, dataset_path):
                 else:
                     start_time = math.floor(random.uniform(0, video_length-3))
                 os.makedirs(os.path.dirname(image_path), exist_ok=True)
-                os.system(f"cd {image_path} | ffmpeg -loglevel quiet -ss {start_time} -t {duration} -i {video_path} -vf fps={frame_rate} {image_path}%d.jpg")
+                subprocess.run([
+                    "ffmpeg",
+                    "-loglevel", "quiet",
+                    "-ss", str(start_time),
+                    "-t", str(duration),
+                    "-i", video_path,
+                    "-vf", f"fps={frame_rate}",
+                    f"{image_path}%d.jpg"
+                ], check=True)
+                # os.system(f"cd {image_path} | ffmpeg -loglevel quiet -ss {start_time} -t {duration} -i {video_path} -vf fps={frame_rate} {image_path}%d.jpg")
             except Exception as e:
                 with open('error.log', 'a') as f:
                     f.write(f"{video_name} error\n")

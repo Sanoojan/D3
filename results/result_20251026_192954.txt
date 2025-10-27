@@ -1,0 +1,7 @@
+AP Evaluation Results
+Encoder: XCLIP-16
+Loss Type: l2
+Real CSV: GenVideo/csv/real_MSRVTT.csv
+Fake CSV: GenVideo/csv/Crafter.csv
+Total Samples: 2000
+AP Score: 0.9856
