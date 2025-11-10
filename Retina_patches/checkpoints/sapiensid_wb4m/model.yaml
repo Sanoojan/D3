@@ -1,0 +1,65 @@
+color_space: RGB
+name: mrm
+output_dim: 4096
+start_from: ''
+freeze: false
+pretrained_path: ''
+rgb_mean:
+- 0.5
+- 0.5
+- 0.5
+rgb_std:
+- 0.5
+- 0.5
+- 0.5
+input_size:
+- 384
+- 384
+square_pad: true
+mask_ratio: 0.66
+backbone:
+  name: face_vit_base
+  dynamic_patch_base_size: 32
+  pos_embed_type: sincos_2d
+  use_mask_token: true
+  vis: false
+  use_subset_loss: false
+  emb_dim: 512
+  debug_vis: true
+patch_embed_config:
+  name: dynamic
+  use_fg_mask: true
+  use_mask_token: true
+  emb_dim: 512
+  dynamic_patch_base_size: 32
+  subset_method: face_first_0.3
+  level_emdecoder_kv_attention_headsb: true
+rpe_config:
+  name: KPRPE_shared
+  rpe_on: k
+  shared_head: true
+  mode: ctx
+  method: product
+  ratio: 1.9
+  ctx_type: rel_keypoint_splithead_unshared_nonlinear
+  num_keypoints: 19
+  kp_dim: 512
+head:
+  type: semantic_attention_head
+  n_multiply_per_query: 4
+  depth: 1
+  num_heads: 1
+  model_parallel_size: 1
+  decoder_kv_attention_heads: 1
+  in_feature_dim: 512
+  output_dim: 4096
+  num_keypoints: 19
+  emb_dim: 512
+kp_preprocessor:
+  name: kp19
+  drop_idv_ldmk_prob: 0.05
+  drop_part_ldmk_prob: 0.05
+  bbox_aug_shift_range: 0.05
+  bbox_aug_scale_range: 0.05
+  bbox_drop_prob: 0.05
+yaml_path: /sapiens_id/configs/base.yaml

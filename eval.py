@@ -28,9 +28,9 @@ if __name__ == '__main__':
     parser.add_argument('--encoder', type=str, default='XCLIP-16', 
                         help='Encoder model name (default: XCLIP-16)',
                         choices=['CLIP-16', 'CLIP-32', 'XCLIP-16', 'XCLIP-32', 'DINO-base', 'DINO-large', 'ResNet-18', 'VGG-16', 'EfficientNet-b4', 'MobileNet-v3'])
-    parser.add_argument('--real-csv', type=str, default=None,
+    parser.add_argument('--real-csv', type=str, default="GenVideo/csv/real_MSRVTT.csv",
                         help='Path to the real data CSV file ')
-    parser.add_argument('--fake-csv', type=str, default=None,
+    parser.add_argument('--fake-csv', type=str, default="GenVideo/csv/MoonValley.csv",
                         help='Path to the fake/synthetic data CSV file')
     args = parser.parse_args()
 

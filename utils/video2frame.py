@@ -63,7 +63,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     dataset_path = args.dataset_path
 
-    video_paths = glob(f"{dataset_path}/video/**", recursive=True)
+    video_paths = glob(f"{dataset_path}/**", recursive=True)
     video_paths = [vp for vp in video_paths if vp.endswith(('.mp4', '.avi', '.mov', '.mkv', '.gif'))]
 
     print(f"Find {len(video_paths)} videos!")

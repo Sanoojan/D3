@@ -1,3 +1,11 @@
 GenVideo/*
 data/*
-models/*
+checkpoints/*
+results/*
+adaptive_patches/*
+visualizations/*
+.gitignore
+dp_vis/*
+**/*.pyc
+__pycache__/*
+**/*.pth

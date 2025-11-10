@@ -19,6 +19,10 @@ def main(is_real,dataset_path,folder_paths):
     for folder in folder_paths:
         folder_path = f'{dataset_path}/frames/' + folder
         csv_path = f'{dataset_path}/csv/' + folder + '.csv'
+        csv_dir = os.path.dirname(csv_path)
+        if not os.path.exists(csv_dir):
+            os.makedirs(csv_dir)
+        
         all_dirs = []
         for root, dirs, files in os.walk(folder_path):
             for dir in dirs:

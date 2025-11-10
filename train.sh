@@ -1,0 +1,3 @@
+# python train_retina.py --gpu-id 2  --save-dir checkpoints/mrm_Local_temporal_classifier --epochs 10
+
+python train_custom_patches.py --gpu-id 2  --save-dir checkpoints/d3_transformer_classifier_DFDC_custom_try1 --epochs 10 --classifier-type Transformer --train-real-csv dataset/DeepfakeDatasets/DFDC/csv/train_real.csv --train-fake-csv dataset/DeepfakeDatasets/DFDC/csv/train_fake.csv --test-real-csv dataset/DeepfakeDatasets/DFDC/csv/test_real.csv --test-fake-csv dataset/DeepfakeDatasets/DFDC/csv/test_fake.csv
